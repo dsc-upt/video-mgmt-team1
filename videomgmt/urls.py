@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from api.views.Video_view import VideoList, VideoDetail
+from api.views.cat_view import get_by_id, get_cat_list
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+	path('admin/', admin.site.urls),
+	path('videos/', VideoList.as_view()),
+	path('videos/<int:pk>/', VideoDetail.as_view()),
+	path('cats/<int:id>', get_by_id),
+	path('cats/', get_cat_list),
+
 ]
